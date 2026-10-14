@@ -31,7 +31,7 @@ spec:
               memory: 128Mi
           readinessProbe:
             httpGet:
-              path: /ready
+              path: /health
               port: http
             periodSeconds: 5
           livenessProbe:
