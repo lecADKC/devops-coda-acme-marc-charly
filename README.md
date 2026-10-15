@@ -19,3 +19,4 @@ npm start
 docker build -t devops-app:dev .
 ```
 direct push test
+direct push test
