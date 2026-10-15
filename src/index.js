@@ -127,6 +127,12 @@ const server = http.createServer((req, res) => {
       writeJson(res, 200, { status: "ok", result: add(2, 3) });
       return;
     }
+    if (path === "/uptime") {
+      writeJson(res, 200, {
+        uptime: process.uptime()
+      });
+      return;
+    }
 
     statusCode = 404;
     writeJson(res, statusCode, { error: "Not found" });
