@@ -109,12 +109,9 @@ const server = http.createServer((req, res) => {
       res.end(body);
       return;
     }
-    if (path === "/version") {
+    if (path === "/ready") {
       writeJson(res, 200, {
-        version: "1.1.0",
-        nodeVersion: process.version,
-        hostname: os.hostname(),
-        environment: process.env.APP_ENV || "unknown"
+        ready: true
       });
       return;
     }
