@@ -1,4 +1,5 @@
 const http = require("http");
+const os = require("os");
 const { add } = require("./math");
 
 const durationBuckets = [0.05, 0.1, 0.2, 0.5, 1, 2];
@@ -121,6 +122,12 @@ const server = http.createServer((req, res) => {
 
     if (path === "/") {
       writeJson(res, 200, { status: "ok", result: add(2, 3) });
+      return;
+    }
+    if (path === "/uptime") {
+      writeJson(res, 200, {
+        uptime: process.uptime()
+      });
       return;
     }
 
