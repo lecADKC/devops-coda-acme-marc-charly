@@ -114,6 +114,21 @@ const server = http.createServer((req, res) => {
         ready: true
       });
       return;
+    if (path === "/version") {
+      writeJson(res, 200, {
+        version: "1.1.0",
+        nodeVersion: process.version,
+        hostname: os.hostname(),
+        environment: process.env.APP_ENV || "unknown"
+      });
+      return;
+    }
+    if (path === "/ready") {
+      writeJson(res, 200, {
+        ready: true
+      });
+      return;
+    }
     }
     if (path === "/health") {
       writeJson(res, 200, {
@@ -125,7 +140,9 @@ const server = http.createServer((req, res) => {
     }
     if (path === "/") {
       writeJson(res, 200, { status: "ok", result: add(2, 3) });
-      return;
+    
+
+  return;
     }
     if (path === "/uptime") {
       writeJson(res, 200, {
